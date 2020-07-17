@@ -30,8 +30,7 @@ body {
 
 main {
 	width: 320px;
-	height: fit-content;
-	height: 75vh;
+	height: 500px;
 	border-radius: 1rem;
 	background-color: var(--dark-clr);
 	padding: 1.6rem;
