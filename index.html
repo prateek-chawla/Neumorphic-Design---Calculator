@@ -5,49 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/ff2da372d8.js" crossorigin="anonymous" defer></script>
     <script src="index.js" defer></script>
     <title>Calculator</title>
 </head>
 
 <body>
-    <main class="neu">
-        <div id="result-box">
-            <div id="prev-result"></div>
-            <div id="curr-result"></div>
+    <main class="neu-card">
 
+        <div id="result-box">
+            <div id="prev-result" class="overflow"></div>
+            <div id="curr-result" class="overflow"></div>
         </div>
-        <table>
-            <tr class="button-row">
-                <td class="button reset-btn neu">CE</td>
-                <td class="button sqrt-btn neu">sqrt</td>
-                <td class="button dlt-btn neu">&lt--</td>
-                <td data-operator="/" class="button op-btn neu">/</td>
-            </tr>
-            <tr class="button-row">
-                <td class="button num-btn neu">7</td>
-                <td class="button num-btn neu">8</td>
-                <td class="button num-btn neu">9</td>
-                <td data-operator="*" class="button op-btn neu">x</td>
-            </tr>
-            <tr class="button-row">
-                <td class="button num-btn neu">4</td>
-                <td class="button num-btn neu">5</td>
-                <td class="button num-btn neu">6</td>
-                <td data-operator="-" class="button op-btn neu">-</td>
-            </tr>
-            <tr class="button-row">
-                <td class="button num-btn neu">1</td>
-                <td class="button num-btn neu">2</td>
-                <td class="button num-btn neu">3</td>
-                <td data-operator="+" class="button op-btn neu">+</td>
-            </tr>
-            <tr class="button-row">
-                <td class="button num-btn neu">00</td>
-                <td class="button num-btn neu">0</td>
-                <td class="button num-btn neu">.</td>
-                <td class="button result-btn neu">=</td>
-            </tr>
-        </table>
+
+        <div class="buttons">
+
+            <div class="button reset-btn neu">AC</div>
+            <div class="button sqrt-btn neu"><i class="fas fa-square-root-alt"></i></div>
+            <div class="button dlt-btn neu"><i class="fas fa-backspace"></i></div>
+            <div data-operator="/" class="button op-btn neu"><i class="fas fa-divide"></i></div>
+
+            <div class="button num-btn neu">7</div>
+            <div class="button num-btn neu">8</div>
+            <div class="button num-btn neu">9</div>
+            <div data-operator="*" class="button op-btn neu"><i class="fas fa-times"></i></div>
+
+            <div class="button num-btn neu">4</div>
+            <div class="button num-btn neu">5</div>
+            <div class="button num-btn neu">6</div>
+            <div data-operator="-" class="button op-btn neu"><i class="fas fa-minus"></i></div>
+
+            <div class="button num-btn neu">1</div>
+            <div class="button num-btn neu">2</div>
+            <div class="button num-btn neu">3</div>
+            <div data-operator="+" class="button op-btn neu"><i class="fas fa-plus"></i></div>
+
+            <div class="button num-btn neu">0</div>
+            <div class="button num-btn neu">.</div>
+            <div class="button result-btn neu"><i class="fas fa-equals"></i></div>
+        </div>
+
     </main>
 
 </body>

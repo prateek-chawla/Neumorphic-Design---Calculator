@@ -30,7 +30,7 @@ numBtns.forEach(numBtn => {
 
 opBtns.forEach(opBtn => {
 	opBtn.addEventListener("click", event => {
-		const op = event.target.getAttribute("data-operator");
+        const op = event.target.closest("[data-operator]").getAttribute("data-operator");
 		operatorChanged(op);
 		updateResult();
 	});
@@ -54,10 +54,10 @@ function operandChanged(num) {
 		currOperand = "";
 	}
 
-    if (num === ".") {
-        // Already includes a decimal
-        if (currOperand.includes(".")) return;
-        // If No Operand is prepended to decimal, add 0
+	if (num === ".") {
+		// Already includes a decimal
+		if (currOperand.includes(".")) return;
+		// If No Operand is prepended to decimal, add 0
 		if (!currOperand) currOperand += "0";
 	}
 	currOperand = currOperand.toString() + num;
@@ -68,15 +68,16 @@ function operatorChanged(op) {
 		reset();
 		errorFlag = false;
 	}
-    if (resetFlag) {
-        // Using the Prev Result, Do not reset
+	if (resetFlag) {
+		// Using the Prev Result, Do not reset
 		resetFlag = false;
-    }
+	}
 
-	if (!currOperand) {
-		currOperand = "0";
+    if (!currOperand) {
+        if (op === "-")
+            currOperand = "0";
+        else return;
     }
-
 	evaluate();
 	operator = op;
 	prevOperand = currOperand;
@@ -93,15 +94,15 @@ function reset() {
 }
 
 function deleteOperand() {
-    // Remove last character/number from operand
+	// Remove last character/number from operand
 	currOperand = currOperand.slice(0, -1);
 	updateResult();
 }
 
 function updateResult() {
 	prevResult = `${prevOperand} ${operator}`;
-    currResult = currOperand;
-    // Set Display
+	currResult = currOperand;
+	// Set Display
 	prevResultDiv.textContent = prevResult;
 	currResultDiv.textContent = currResult;
 }
@@ -110,10 +111,10 @@ function evaluate() {
 	const parsedCurrOperand = parseFloat(currOperand);
 	const parsedPrevOperand = parseFloat(prevOperand);
 
-    // Return if any value is undefined/invalid
+	// Return if any value is undefined/invalid
 	if (isNaN(parsedCurrOperand) || isNaN(parsedPrevOperand) || !operator) {
 		return;
-    }
+	}
 
 	let result;
 	switch (operator) {
@@ -127,10 +128,10 @@ function evaluate() {
 			result = parsedPrevOperand * parsedCurrOperand;
 			break;
 		case "/":
-            if (parsedCurrOperand === 0) {
-                // Division by Zero
+			if (parsedCurrOperand === 0) {
+				// Division by Zero
 				reset();
-				currResultDiv.textContent = "Zero Division Error";
+				currResultDiv.textContent = "Zero Division";
 				errorFlag = true;
 				return;
 			} else result = parsedPrevOperand / parsedCurrOperand;
@@ -145,8 +146,8 @@ function evaluate() {
 function getSqrt() {
 	if (!currOperand) return;
 	const parsedCurrOperand = parseFloat(currOperand);
-    if (parsedCurrOperand < 0) {
-        // Sqrt of a negative number
+	if (parsedCurrOperand < 0) {
+		// Sqrt of a negative number
 		reset();
 		currResultDiv.textContent = "Invalid Input";
 		errorFlag = true;
